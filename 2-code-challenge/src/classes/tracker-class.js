@@ -1,7 +1,7 @@
 import {Category} from "./category-class.js";
 import {Expense} from "./expense-class.js";
-import {validateNumber, validateString} from "./validation.js";
-import {displayExpenses, displayExpensesByCategory} from "./domRedering.js"
+import {validateNumber, validateString} from "../validation.js";
+import {displayExpenses, displayExpensesByCategory} from "../domRedering.js"
 
 export class Tracker {
     constructor() {
@@ -65,5 +65,15 @@ export class Tracker {
             acc[categoryName] += Number(expense.amount);
             return acc;
         }, {});
+    }
+
+    deleteExpense(e){
+        const idExpense = e.target.parentElement.getAttribute('idExpense');
+        if(e.target.classList.contains('delete-btn')){
+            this.expenses = this.expenses.filter((expense) => Number(expense.idExpense) !== Number(idExpense));
+            this.saveExpenses();
+            displayExpenses(this.expenses);
+            displayExpensesByCategory(this.getExpensesByCategory())
+        }
     }
 }
