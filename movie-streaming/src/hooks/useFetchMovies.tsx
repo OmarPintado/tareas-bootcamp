@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
+import {Movie} from '../interfaces/movie.interface.ts';
 
 export const useFetchMovies = (url : string ) => {
-    const [movies, setMovies] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const [movies, setMovies] = useState<Movie[]>([]);
+    const [loading, setLoading] = useState<boolean>(true);
     const [errors, setErrors] = useState<string>();
 
-    const bearerToken = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkNjBjMDk3ZmU2MzI3OGJhNWUzNjUzMzNkMjY0OTA4ZiIsIm5iZiI6MTcyNjYyODQ0Ny40NzQxOTYsInN1YiI6IjY2ZWE0MTM0NTE2OGE4OTZlMTFmMmQyYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.jszdJqRxCIeUpNoebtoudDRxffO3Y8OQAa4v5PVxU5E'
+    // @ts-expect-error nose
+    const bearerToken:string = import.meta.env.VITE_MOVIEDB_TOKEN;
 
     useEffect(() => {
         setLoading(true);
