@@ -1,6 +1,20 @@
 import './NavBar.css';
+import React, {useState} from 'react';
 
 export const NavBar = () => {
+
+    const [inputValue, setInputValue] = useState('');
+
+    const onInputChange = ({target} : React.ChangeEvent<HTMLInputElement>) => {
+        setInputValue(target.value);
+    }
+
+    const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        if(inputValue.trim().length <= 1) return;
+        console.log({inputValue})
+    }
+
     return (
         <nav className="navbar">
             <div className="navbar-left">
@@ -10,12 +24,17 @@ export const NavBar = () => {
                     <li className="navbar-item">Country</li>
                 </ul>
             </div>
-            <div className="navbar-center">
-                <input type="text" className="search-input" placeholder="Search movies...."/>
-                <button className="search-button">
+            <form onSubmit={ onSubmit } className="navbar-center">
+                <input type="text"
+                       className="search-input"
+                       placeholder="Search movies...."
+                       value={ inputValue }
+                       onChange={onInputChange}
+                />
+                <button type="submit" className="search-button">
                     <i className="fa fa-search"></i>
                 </button>
-            </div>
+            </form>
             <div className="navbar-right">
                 <ul className="navbar-menu">
                     <li className="navbar-item">Movies</li>

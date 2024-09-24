@@ -1,35 +1,40 @@
 .navbar {
+	position: relative;
+	top: 0;
+	left: 0;
 	display: flex;
-	justify-content: space-between;
 	align-items: center;
+	justify-content: space-between;
+	max-width: 100vw;
+	padding: 0.75rem 1.5rem;
 	background-color: #000;
-	padding: 10px 20px;
 	}
 
 .navbar-menu {
 	display: flex;
-	list-style: none;
+	justify-content: space-between;
 	margin: 0;
 	padding: 0;
+	list-style: none;
 	}
 
 .navbar-item {
-	color: #fff;
-	margin: 0 10px;
-	cursor: pointer;
 	position: relative;
+	margin: 0 1rem;
+	cursor: pointer;
+	color: #fff;
 	}
 
 .navbar-item.active::after {
-	content: '';
 	position: absolute;
 	bottom: -5px;
 	left: 50%;
-	transform: translateX(-50%);
 	width: 5px;
 	height: 5px;
-	background-color: red;
+	content: '';
+	transform: translateX(-50%);
 	border-radius: 50%;
+	background-color: red;
 	}
 
 .navbar-center {
@@ -45,14 +50,14 @@
 	}
 
 .search-button {
-	padding: 6px 10px;
-	border: none;
-	background-color: #fff;
-	border-radius: 0 20px 20px 0;
-	cursor: pointer;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	padding: 6px 10px;
+	cursor: pointer;
+	border: none;
+	border-radius: 0 20px 20px 0;
+	background-color: #fff;
 	}
 
 .search-button .fas {
@@ -66,4 +71,17 @@
 
 .fa-bell {
 	color: #fff;
+	}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+	.navbar-left,
+	.navbar-right {
+		display: none;
+		}
+
+	.navbar {
+		max-width: 100vw;
+		}
+
 	}
