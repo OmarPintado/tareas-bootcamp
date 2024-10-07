@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import {Movie} from '../interfaces/movie.interface.ts';
 
-export const useFetchMovies = (url : string ) => {
+export const useFetchMovies = (url : string, limit: number = 4 ) => {
     const [movies, setMovies] = useState<Movie[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [errors, setErrors] = useState<string>();
@@ -21,7 +21,7 @@ export const useFetchMovies = (url : string ) => {
         })
             .then((response) => response.json())
             .then((data) => {
-                setMovies(data.results.slice(0,4));
+                setMovies(data.results.slice(0,limit));
             })
             .catch((error) => {
                 console.error(error);
@@ -31,7 +31,7 @@ export const useFetchMovies = (url : string ) => {
                 setLoading(false);
             });
 
-    }, [url]);
+    }, [url,limit]);
 
     return { data: movies, errors, loading };
 };

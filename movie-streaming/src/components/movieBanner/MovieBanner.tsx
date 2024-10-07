@@ -52,7 +52,7 @@ export const MovieBanner = () => {
                         <span className="movie-banner__tag">Science Fiction</span>
                         <span className="movie-banner__info"><i className="fa-regular fa-calendar-days"></i> {currentMovie.release_date.split('-')[0]}</span>
                         <span className="movie-banner__info"><i className="fa-regular fa-clock"></i> 3:12:00</span>
-                        <span className="movie-banner__info"><i className="fas fa-star"></i> {currentMovie.vote_average}</span>
+                        <span className="movie-banner__info"><i className="fas fa-star"></i> {currentMovie.vote_average.toFixed(1)}</span>
                     </div>
                     <p className="movie-banner__description">
                         {currentMovie.overview}
