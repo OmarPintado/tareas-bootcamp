@@ -25,8 +25,8 @@ export const Section: React.FC<SectionProps> = ({title, movies}) => {
                                 <i className="fas fa-play"></i>
                             </button>
                             <div className="movie__info">
-                                <span>{movie.vote_count}</span>
-                                <span>{movie.vote_average.toFixed(1)}</span>
+                                <span><i className="fa-solid fa-pencil"></i> {movie.vote_count}</span>
+                                <span><i className="fas fa-star"></i> {movie.vote_average.toFixed(1)}</span>
                             </div>
                             <div className="movie__tags">
                                 {movie.genre_ids.map((genre) => (

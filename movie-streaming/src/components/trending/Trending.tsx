@@ -57,7 +57,7 @@ export const Trending = () => {
                                 </button>
                                 <div className="trending__info">
                                     <span>{movie.video}</span>
-                                    <span>{movie.vote_average.toFixed(1)}</span>
+                                    <span><i className="fas fa-star"></i> {movie.vote_average.toFixed(1)}</span>
                                 </div>
                                 <div className="trending__tags">
                                     <span className="trending__tag">Action</span>

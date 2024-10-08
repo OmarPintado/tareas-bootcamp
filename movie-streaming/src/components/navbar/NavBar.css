@@ -23,6 +23,7 @@
 	margin: 0 1rem;
 	cursor: pointer;
 	color: #fff;
+	text-decoration: none;
 	}
 
 .navbar-item.active::after {

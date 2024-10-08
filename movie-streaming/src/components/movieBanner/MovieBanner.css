@@ -60,6 +60,11 @@
 	gap: 1rem;
 	}
 
+.movie-banner__button.active {
+	background-color: #ff6347;
+	color: #fff;
+	}
+
 .movie-banner__button--watch-now {
 	color: #fff;
 	background-color: #FF0000;

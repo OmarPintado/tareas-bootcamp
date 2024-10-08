@@ -8,6 +8,7 @@ export const MovieBanner = () => {
 
     const {data: movies} = useFetchMovies('https://api.themoviedb.org/3/movie/popular');
     const [currentMovieIndex, setCurrentMovieIndex] = useState(0);
+    const [watchStatus, setWatchStatus] = useState<string>('')
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -20,6 +21,14 @@ export const MovieBanner = () => {
     if (!movies.length) return null;
 
     const currentMovie = movies[currentMovieIndex];
+
+    const handleWatchNowClick = (): void => {
+        setWatchStatus('watchNow');
+    };
+
+    const handleWatchLaterClick = (): void => {
+        setWatchStatus('watchLater');
+    };
 
     return (
         <div className="movie-banner">
@@ -37,10 +46,16 @@ export const MovieBanner = () => {
             </div>
             <div className="movie-banner__content">
                 <div className="movie-banner__buttons">
-                    <button className="movie-banner__button movie-banner__button--watch-now">
+                    <button
+                        className={`movie-banner__button movie-banner__button--watch-now ${watchStatus === 'watchNow' ? 'active' : ''}`}
+                        onClick={handleWatchNowClick}
+                    >
                     Watch Now <i className="fas fa-circle-play"></i>
                     </button>
-                    <button className="movie-banner__button movie-banner__button--watch-later">
+                    <button
+                        className={`movie-banner__button movie-banner__button--watch-later ${watchStatus === 'watchLater' ? 'active' : ''}`}
+                        onClick={handleWatchLaterClick}
+                    >
                         Watch Later <i className="fas fa-clock"></i>
                     </button>
                 </div>
