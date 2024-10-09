@@ -1,6 +1,6 @@
 import './NavBar.css';
 import React, {useState} from 'react';
-import {NavLink} from 'react-router-dom';
+import {NavigateFunction, NavLink, useNavigate} from 'react-router-dom';
 
 export const NavBar = () => {
 
@@ -14,6 +14,13 @@ export const NavBar = () => {
         event.preventDefault();
         if (inputValue.trim().length <= 1) return;
         console.log({inputValue})
+    }
+
+    const navigate: NavigateFunction = useNavigate();
+    const onLogout = () =>{
+        navigate('/login', {
+            replace: true,
+        });
     }
 
     return (
@@ -71,7 +78,7 @@ export const NavBar = () => {
                     >
                         Animation
                     </NavLink>
-                    <div className="navbar-item">Login/Signup</div>
+                    <div className="navbar-item" onClick={onLogout}>Logout</div>
                     <div className="navbar-item">
                         <i className="fa fa-bell"></i>
                     </div>
